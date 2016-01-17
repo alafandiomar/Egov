@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/main"
+            android:icon="@drawable/home"
+            android:title="الصفحة الرئيسية" />
+        <item
+            android:id="@+id/add_complaint"
+            android:icon="@drawable/makecomplaint"
+            android:title="تقديم شكوى" />
+        <item
+            android:id="@+id/required_documents"
+            android:icon="@drawable/documents"
+            android:title="المستندات المطلوبة" />
+        <item
+            android:id="@+id/phone_book"
+            android:icon="@drawable/phonebook"
+            android:title="ارقام وعناوين المخافر" />
+        <item
+            android:id="@+id/complaint_management"
+            android:icon="@drawable/document_management"
+            android:title="متابعة شكوى" />
+        <item
+            android:id="@+id/travel_notify"
+            android:icon="@drawable/airplane"
+            android:title="حالة سفر" />
+
+    </group>
+
+</menu>

@@ -1,0 +1,77 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.egov.egov.Fragments.ComplaintDialogFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+            <EditText
+                android:id="@+id/to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="إلى"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+            <EditText
+                android:id="@+id/Subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="الموضوع"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">        <EditText
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="بيان الشكوى"
+            android:inputType="textMultiLine" /></android.support.design.widget.TextInputLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageButton style="@style/AppTheme"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="New Button"
+        android:id="@+id/attach_btn"
+        android:elevation="10dp"
+        android:src="@android:drawable/ic_menu_upload"
+        android:background="@drawable/circlebutton" />
+
+    <ImageButton style="@style/AppTheme"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:text="New Button"
+        android:id="@+id/id_attach"
+        android:elevation="10dp"
+        android:src="@android:drawable/ic_menu_crop"
+        android:background="@drawable/circlebutton"
+        android:layout_gravity="center_horizontal" />
+
+
+</LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>
