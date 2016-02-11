@@ -3,6 +3,8 @@ package com.egov.egov.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,10 +27,13 @@ public class ComplaintFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
+    static FragmentManager fmngr;
+    SwipeRefreshLayout mSwipeRefreshLayout;
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
-private Context context;
+    private Context context;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -37,13 +42,15 @@ private Context context;
 
     }
 
+
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ComplaintFragment newInstance(int columnCount) {
+    public static ComplaintFragment newInstance(int columnCount, FragmentManager fm) {
         ComplaintFragment fragment = new ComplaintFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
+        fmngr = fm;
         return fragment;
     }
 
@@ -59,9 +66,7 @@ private Context context;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_complaint_list, container, false);
-
-        // Set the adapter
+        View view = inflater.inflate(R.layout.fragment_complaint_list, container, false);// Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
@@ -70,7 +75,7 @@ private Context context;
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyComplaintRecyclerViewAdapter(DummyContentComplaint.ITEMS,context));
+            recyclerView.setAdapter(new MyComplaintRecyclerViewAdapter(DummyContentComplaint.ITEMS, context, fmngr));
         }
         return view;
     }

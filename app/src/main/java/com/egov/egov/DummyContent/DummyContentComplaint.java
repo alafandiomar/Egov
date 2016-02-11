@@ -26,9 +26,9 @@ public class DummyContentComplaint {
     private static final int COUNT = 4;
 
     static {
-        addItem(new DummyItem("1","شكاوي للمخفر"));
-        addItem(new DummyItem("2","شكاوي للرقابة و التفتيش"));
-        addItem(new DummyItem("3","شكاوي سرية"));
+        addItem(new DummyItem("1", "Police Station"));
+        addItem(new DummyItem("2", "Control and inspection"));
+        addItem(new DummyItem("3", "Confidential"));
     }
 
     private static void addItem(DummyItem item) {

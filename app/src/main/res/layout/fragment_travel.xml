@@ -2,39 +2,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.TravelFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <android.support.design.widget.TextInputLayout
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Departing Date"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/departing_label"/>
+        <TextView
+            android:id="@+id/departing"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:id="@+id/departing_date"
-                android:hint="تاريخ السفر"/>
-        </android.support.design.widget.TextInputLayout>
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/mdtp_white"
+            android:elevation="5dp"
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:id="@+id/arriving_date"
-                android:hint="تاريخ العودة"/>
-        </android.support.design.widget.TextInputLayout>
+            android:gravity="center"
+            />
         <Space
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="30dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Arriving Date"
+            android:layout_marginBottom="10dp"
+
+            android:id="@+id/arriving_label"/>
+        <TextView
+            android:id="@+id/arriving"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/mdtp_white"
+            android:elevation="5dp"
+
+            android:gravity="center"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+        <fr.ganfra.materialspinner.MaterialSpinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ms_multiline="false"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:ms_enableFloatingLabel="false"
+            app:ms_enableErrorLabel="false"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
         <ImageButton style="@style/AppTheme"
             android:layout_width="60dp"
             android:layout_height="60dp"

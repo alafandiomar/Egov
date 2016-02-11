@@ -6,27 +6,24 @@
         <item
             android:id="@+id/main"
             android:icon="@drawable/home"
-            android:title="الصفحة الرئيسية" />
+            android:title="Home"
+            />
         <item
             android:id="@+id/add_complaint"
             android:icon="@drawable/makecomplaint"
-            android:title="تقديم شكوى" />
-        <item
-            android:id="@+id/required_documents"
-            android:icon="@drawable/documents"
-            android:title="المستندات المطلوبة" />
+            android:title="New Complaint"  />
         <item
             android:id="@+id/phone_book"
             android:icon="@drawable/phonebook"
-            android:title="ارقام وعناوين المخافر" />
+            android:title="Phonebook" />
         <item
             android:id="@+id/complaint_management"
             android:icon="@drawable/document_management"
-            android:title="متابعة شكوى" />
+            android:title="Complaint Status" />
         <item
             android:id="@+id/travel_notify"
             android:icon="@drawable/airplane"
-            android:title="حالة سفر" />
+            android:title="Travel Notfiy" />
 
     </group>
 

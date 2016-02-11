@@ -32,7 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:id="@+id/civil_number_material"
+            >
 
             <EditText
                 android:id="@+id/civil_number"
@@ -52,14 +54,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:id="@+id/full_name_material"
+            >
 
             <EditText
-                android:id="@+id/phone_number"
+                android:id="@+id/full_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Phone Number"
-                android:inputType="number" />
+                android:hint="Full Name"
+                android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -71,7 +75,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:id="@+id/input_email_material"
+
+            >
 
             <EditText
                 android:id="@+id/input_email"
@@ -91,7 +98,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:id="@+id/input_password_material"
+
+            >
 
             <EditText
                 android:id="@+id/input_password"
@@ -109,7 +119,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:id="@+id/re_input_password_material"
+
+            >
 
             <EditText
                 android:id="@+id/re_input_password"

@@ -2,74 +2,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.egov.egov.Fragments.ComplaintDialogFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <android.support.design.widget.TextInputLayout
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimaryDark">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+
+        <fr.ganfra.materialspinner.MaterialSpinner
+            android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            app:ms_multiline="false"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:ms_enableFloatingLabel="false"
+            app:ms_enableErrorLabel="false"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/material_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"           android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+
             android:layout_marginTop="8dp">
+
             <EditText
-                android:id="@+id/to"
+                android:id="@+id/Subject_textbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="إلى"
+                android:hint="Subject"
                 android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
+
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/material_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="8dp"           android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+
             android:layout_marginTop="8dp">
+
             <EditText
-                android:id="@+id/Subject"
+                android:id="@+id/info_textbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="الموضوع"
-                android:inputType="text" />
+                android:hint="Content"
+                android:inputType="textMultiLine" />
         </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">        <EditText
-            android:id="@+id/info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="بيان الشكوى"
-            android:inputType="textMultiLine" /></android.support.design.widget.TextInputLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    <ImageButton style="@style/AppTheme"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:text="New Button"
-        android:id="@+id/attach_btn"
-        android:elevation="10dp"
-        android:src="@android:drawable/ic_menu_upload"
-        android:background="@drawable/circlebutton" />
+            <ImageButton
+                android:id="@+id/attach_btn"
+                style="@style/AppTheme"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/circlebutton"
+                android:elevation="10dp"
+                android:src="@android:drawable/ic_menu_upload"
+                android:text="New Button" />
 
-    <ImageButton style="@style/AppTheme"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:text="New Button"
-        android:id="@+id/id_attach"
-        android:elevation="10dp"
-        android:src="@android:drawable/ic_menu_crop"
-        android:background="@drawable/circlebutton"
-        android:layout_gravity="center_horizontal" />
+            <ImageButton
+                android:id="@+id/id_attach"
+                style="@style/AppTheme"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/circlebutton"
+                android:elevation="10dp"
+                android:src="@android:drawable/ic_menu_crop"
+                android:text="New Button" />
 
 
-</LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
