@@ -22,6 +22,8 @@ public class ServiceCall {
 
     public static String BaseUrl = "http://192.168.1.109:81/Internal_Affairs_API/index.php/";
     public static String imageUrl = "http://192.168.1.109:81/Internal_Affairs_API/application/images";
+    public static String upLoadServerUri = "http://192.168.1.109:81/Internal_Affairs_API/application/AndroidFileUpload/uploadPhoto.php";
+    public static String getPhotoIDUri = "http://192.168.1.109:81/Internal_Affairs_API/application/AndroidFileUpload/getIDbyName.php";
     static String username = "d892ebe8-b991-4408-afa7-48a78d0324ae";
     static String host = "services.adta.ae";
     static String password = "#vad!321";

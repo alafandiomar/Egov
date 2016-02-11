@@ -67,8 +67,6 @@ public class Complaint extends AppCompatActivity {
     SharedPreferences sharedPreferences,sharedPreferences2;
     SharedPreferences.Editor editor,editor2;
     private ProgressDialog dialog = null;
-    private String upLoadServerUri = null;
-    private String getPhotoIDUri = null;
     private int serverResponseCode = 0;
     RequestQueue queue;
     public HashMap<String, String> idPair;
@@ -86,8 +84,7 @@ public class Complaint extends AppCompatActivity {
         sharedPreferences2 = getSharedPreferences("Name",MODE_PRIVATE);
         editor2 = sharedPreferences2.edit();
         new getUser_id().execute();
-        upLoadServerUri = "http://192.168.1.109:81/Internal_Affairs_API/application/AndroidFileUpload/uploadPhoto.php";
-        getPhotoIDUri = "http://192.168.1.109:81/Internal_Affairs_API/application/AndroidFileUpload/getIDbyName.php";
+
         Bundle bundle = this.getIntent().getExtras();
         SpannableString title = new SpannableString(bundle.getString("title").toString());
         title.setSpan(new TypefaceSpan(this, "Lato-Regular.ttf"), 0, title.length(),
@@ -197,7 +194,7 @@ public class Complaint extends AppCompatActivity {
 
                 // open a URL connection to the Servlet
                 FileInputStream fileInputStream = new FileInputStream(sourceFile);
-                URL url = new URL(upLoadServerUri);
+                URL url = new URL(ServiceCall.upLoadServerUri);
 
                 // Open a HTTP  connection to  the URL
                 conn = (HttpURLConnection) url.openConnection();
@@ -484,7 +481,7 @@ public class Complaint extends AppCompatActivity {
 
     public void getIDphoto(final int i) {
         // prepare the Request
-        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, getPhotoIDUri, getParams(i), new Response.Listener<JSONObject>() {
+        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, ServiceCall.getPhotoIDUri, getParams(i), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 try {
