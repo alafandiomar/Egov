@@ -27,8 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     Button login_btn;
     @Bind(R.id.link_signup)
     TextView Sign_up;
-    @Bind(R.id.forgotBtn)
-    Button forgotbtn;
+
     @Bind(R.id.civil_number_material)
     TextInputLayout civilnumbermat;
     @Bind(R.id.input_password_material)
@@ -60,20 +59,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
         );
 
-        this.forgotbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Forgot.class);
-                startActivity(intent);
-            }
-        });
+
 
 
         login_btn.setTypeface(Fonts.getTypeFace(this, "reg"));
         Sign_up.setTypeface(Fonts.getTypeFace(this, "light"));
         password.setTypeface(Fonts.getTypeFace(this, "reg"));
         civilNumber.setTypeface(Fonts.getTypeFace(this, "reg"));
-        forgotbtn.setTypeface(Fonts.getTypeFace(this, "reg"));
         civilnumbermat.setTypeface(Fonts.getTypeFace(this, "reg"));
         passwordmaterial.setTypeface(Fonts.getTypeFace(this, "reg"));
 

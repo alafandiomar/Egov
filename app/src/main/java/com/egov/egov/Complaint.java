@@ -70,7 +70,7 @@ public class Complaint extends AppCompatActivity {
     private int serverResponseCode = 0;
     RequestQueue queue;
     public HashMap<String, String> idPair;
-
+String typeComp = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +90,7 @@ public class Complaint extends AppCompatActivity {
         title.setSpan(new TypefaceSpan(this, "Lato-Regular.ttf"), 0, title.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         setTitle(title);
-
+        typeComp = bundle.getString("title");
         Bitmap bitmap = ((BitmapDrawable) getResources().getDrawable(R.drawable.userid)).getBitmap();
         imageView.setImageBitmap(bitmap);
         Bitmap bitmap2 = ((BitmapDrawable) getResources().getDrawable(R.drawable.docscan)).getBitmap();
@@ -156,7 +156,31 @@ public class Complaint extends AppCompatActivity {
 
                     }
                 }).start();
+                new Thread(new Runnable() {
+                    public void run() {
 
+                        try {
+                            Thread.sleep(6000);
+                            new getLastComp().execute();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
+                System.out.println(idPair.get("Last_complaint")+"GGGGGGGGGGGGGGGGGGGGGGGGGGGGGG");
+                new Thread(new Runnable() {
+                    public void run() {
+
+                        try {
+                            Thread.sleep(7000);
+                            new SendComplaintStage().execute();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
 
             }
         });
@@ -251,7 +275,7 @@ public class Complaint extends AppCompatActivity {
                             String msg = "File Upload Completed.\n\n See uploaded file here : \n\n"
                                     +" F:/wamp/wamp/www/uploads";
 
-                            Toast.makeText(getApplicationContext(), "File Upload Complete.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Your Complaint Has Been Sent", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -411,7 +435,15 @@ public class Complaint extends AppCompatActivity {
 
             ServiceCall serviceCall = new ServiceCall();
             Log.d("here",idPair.get("id")+"  "+idPair.get("ps_id")+"   "+getSub()+"  "+getContent()+"   "+sharedPreferences.getString("id"+1,null)+"   "+sharedPreferences.getString("id"+2,null));
-            return serviceCall.putComplaint(idPair.get("id"),idPair.get("ps_id"),getSub(),getContent(),sharedPreferences.getString("id"+1,null),sharedPreferences.getString("id"+2,null),"haha worked");
+            switch (typeComp){
+                case "Police Station":
+                    return serviceCall.putComplaint(idPair.get("id"),idPair.get("ps_id"),getSub(),getContent(),sharedPreferences.getString("id"+1,null),sharedPreferences.getString("id"+2,null),"public");
+                case "Control and inspection":
+                    return serviceCall.putComplaint(idPair.get("id"),idPair.get("ps_id"),getSub(),getContent(),sharedPreferences.getString("id"+1,null),sharedPreferences.getString("id"+2,null),"public");
+                case "Confidential":
+                    return serviceCall.putComplaint(idPair.get("id"),idPair.get("ps_id"),getSub(),getContent(),sharedPreferences.getString("id"+1,null),sharedPreferences.getString("id"+2,null),"private");
+            }
+            return serviceCall.putComplaint(idPair.get("id"),idPair.get("ps_id"),getSub(),getContent(),sharedPreferences.getString("id"+1,null),sharedPreferences.getString("id"+2,null),"public");
 
         }
 
@@ -451,6 +483,29 @@ public class Complaint extends AppCompatActivity {
             }
         }
     }
+    class SendComplaintStage extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            ServiceCall serviceCall = new ServiceCall();
+            return serviceCall.putComplaintStage(idPair.get("Last_complaint"),"pending");
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+
+        }
+    }
+
     public Map<String, String> getParams(int i){
         Map<String, String> params = new HashMap<String, String>();
         switch (i)
@@ -544,4 +599,45 @@ public class Complaint extends AppCompatActivity {
 
         }
     }
+    class getLastComp extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            ServiceCall serviceCall = new ServiceCall();
+            return serviceCall.getJson("/api_comp/last_complaint/" + idPair.get("id"));
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+
+
+            if (null == result || result.length() == 0) {
+
+
+            } else {
+                try {
+                    JSONArray jsonArray = new JSONArray(result);
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String id = jsonObject.optString("id").toString();
+                        idPair.put("Last_complaint", id);
+                        Log.d("finish1", "finish1");
+                    }
+                } catch (JSONException e) {
+                    Log.d("mother", "ddddddddddddddd");
+                }
+
+            }
+
+        }
+    }
+
 }

@@ -20,10 +20,10 @@ import java.net.URL;
  */
 public class ServiceCall {
 
-    public static String BaseUrl = "http://192.168.1.109:81/Internal_Affairs_API/index.php/";
-    public static String imageUrl = "http://192.168.1.109:81/Internal_Affairs_API/application/images";
-    public static String upLoadServerUri = "http://192.168.1.109:81/Internal_Affairs_API/application/AndroidFileUpload/uploadPhoto.php";
-    public static String getPhotoIDUri = "http://192.168.1.109:81/Internal_Affairs_API/application/AndroidFileUpload/getIDbyName.php";
+    public static String BaseUrl = "http://192.168.1.104:81/Internal_Affairs_API/index.php/";
+    public static String imageUrl = "http://192.168.1.104:81/Internal_Affairs_API/application/images";
+    public static String upLoadServerUri = "http://192.168.1.104:81/Internal_Affairs_API/application/AndroidFileUpload/uploadPhoto.php";
+    public static String getPhotoIDUri = "http://192.168.1.104:81/Internal_Affairs_API/application/AndroidFileUpload/getIDbyName.php";
     static String username = "d892ebe8-b991-4408-afa7-48a78d0324ae";
     static String host = "services.adta.ae";
     static String password = "#vad!321";
@@ -352,6 +352,58 @@ public class ServiceCall {
                     .appendQueryParameter("document_upload_id",doc)
                     .appendQueryParameter("user_id",cvid)
                     .appendQueryParameter("ps_id",policestation_id);
+            String query = builder.build().getEncodedQuery();
+            OutputStream os = urlConnection.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(
+                    new OutputStreamWriter(os, "UTF-8"));
+            writer.write(query);
+            writer.flush();
+            writer.close();
+            os.close();
+
+            urlConnection.connect();
+            if (urlConnection.getResponseCode() == 200) {
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                result = IOUtils.toString(in, "UTF-8");
+                System.out.println("get code result" + result);
+                return result;
+            } else {
+                InputStream in = new BufferedInputStream(urlConnection.getErrorStream());
+                result = IOUtils.toString(in, "UTF-8");
+                System.out.println("get code fail result" + result + urlConnection.getResponseCode());
+
+                return null;
+            }
+
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            System.out.println("MalformedURLException");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("IOException");
+        } finally {
+
+        }
+        return result;
+    }
+
+    public String putComplaintStage(String complaintID,String name) {
+        String result = null;
+        HttpURLConnection urlConnection = null;
+        try {
+            URL url = new URL(BaseUrl + "/api_comp/complaint_stage");
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("PUT");
+            urlConnection.setUseCaches(false);
+            urlConnection.setConnectTimeout(500000);
+            urlConnection.setReadTimeout(500000);
+            urlConnection.setDoInput(true);
+            urlConnection.setDoOutput(true);
+            urlConnection.setRequestProperty("X-API-key", "123456");
+            Uri.Builder builder = new Uri.Builder()
+                    .appendQueryParameter("complaint_id", complaintID)
+                    .appendQueryParameter("name", name);
             String query = builder.build().getEncodedQuery();
             OutputStream os = urlConnection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(

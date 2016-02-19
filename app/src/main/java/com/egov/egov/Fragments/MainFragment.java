@@ -160,7 +160,7 @@ public class MainFragment extends Fragment implements BaseSliderView.OnSliderCli
             protected String doInBackground(String... params) {
 
                 ServiceCall serviceCall = new ServiceCall();
-                return serviceCall.getJson("api_news/all_news");
+                return serviceCall.getJson("api_news/latest_news");
 
             }
 
@@ -197,7 +197,7 @@ public class MainFragment extends Fragment implements BaseSliderView.OnSliderCli
                         Log.d("mother", "ddddddddddddddd");
                     }
                     String s = "";
-                    for (int i = 0; i < 2; i++) {
+                    for (int i = 0; i < NewsList.size(); i++) {
                         s += NewsList.get(i).get("text") + "   ****   ";
                     }
                     recyclerView.setAdapter(new NewsRecyclerViewAdapter(NewsList,getActivity() ));
@@ -214,7 +214,7 @@ public class MainFragment extends Fragment implements BaseSliderView.OnSliderCli
                     txt.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
                     txt.setTypeface(Fonts.getTypeFace(getContext(), "reg"), Typeface.BOLD);
 
-                    for (int j = 0; j < 2; j++) {
+                    for (int j = 0; j < NewsList.size(); j++) {
                         TextSliderView textSliderView = new TextSliderView(getContext());
                         // initialize a SliderLayout
 
