@@ -15,10 +15,6 @@ import android.widget.ListView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -44,7 +40,7 @@ public class MainFragment extends Fragment implements BaseSliderView.OnSliderCli
     TextView txt;
     ListView recyclerView;
     private SliderLayout mDemoSlider;
-    String getURL = "http://192.168.1.109:81/Internal_Affairs_API/index.php/api_news/all_news";
+    //String getURL = "http://192.168.1.109:81/Internal_Affairs_API/index.php/api_news/all_news";
 
     com.android.volley.RequestQueue queue;
     public MainFragment() {
@@ -58,7 +54,7 @@ public class MainFragment extends Fragment implements BaseSliderView.OnSliderCli
 
     }
 
-    public void getMethod(String url) {
+   /* public void getMethod(String url) {
         // prepare the Request
         JsonObjectRequest getRequest = new JsonObjectRequest(
                 Request.Method.GET, url, null,
@@ -100,7 +96,7 @@ public class MainFragment extends Fragment implements BaseSliderView.OnSliderCli
                     }
                 }
         );
-    }
+    }*/
         @Override
         public View onCreateView (LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState){
@@ -108,7 +104,7 @@ public class MainFragment extends Fragment implements BaseSliderView.OnSliderCli
             mDemoSlider = (SliderLayout) view.findViewById(R.id.slider);
             recyclerView = (ListView) view.findViewById(R.id.list);
             queue = VolleySingleton.getInstance(getActivity().getApplicationContext()).getRequestQueue();
-            getMethod(getURL);
+      //      getMethod(getURL);
             txt = (TextView) view.findViewById(R.id.newsbar);
             new SliderNewsTask().execute();
 
@@ -131,12 +127,13 @@ public class MainFragment extends Fragment implements BaseSliderView.OnSliderCli
 
         @Override
         public void onPageScrolled ( int position, float positionOffset, int positionOffsetPixels){
+          Log.d("hahahaah","hajaajaj");
 
         }
 
         @Override
         public void onPageSelected ( int position){
-
+            Log.d("hahahaah","hajaajaj");
         }
 
         @Override
@@ -146,6 +143,7 @@ public class MainFragment extends Fragment implements BaseSliderView.OnSliderCli
 
         @Override
         public void onSliderClick (BaseSliderView slider){
+            Log.d("hahahaah","hajaajaj");
 
         }
 
